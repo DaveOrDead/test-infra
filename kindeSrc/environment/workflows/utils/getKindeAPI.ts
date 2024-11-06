@@ -1,7 +1,7 @@
 const createKindeAPI = async (baseURL) => {
   console.log("getting a token from baseURL", baseURL);
 
-  const token = await kinde.fetch(`${baseURL}/oauth2/token`, {
+  const response = await kinde.fetch(`${baseURL}/oauth2/token`, {
     method: "POST",
     responseFormat: "json",
     headers: {
@@ -15,7 +15,8 @@ const createKindeAPI = async (baseURL) => {
       client_secret: kinde.env.get("WF_M2M_CLIENT_SECRET")?.value,
     }),
   });
-  console.log("received token");
+  console.log("received response", response);
+  const json = response.json;
 
   const kindeAPI = async (accessToken) => {
     console.log("creating kindeAPI with accessToken", accessToken);
@@ -42,7 +43,7 @@ const createKindeAPI = async (baseURL) => {
     };
   };
 
-  return kindeAPI(token.access_token);
+  return kindeAPI(json.access_token);
 };
 
 export { createKindeAPI };
