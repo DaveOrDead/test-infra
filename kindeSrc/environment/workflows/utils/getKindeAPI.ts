@@ -27,6 +27,7 @@ const createKindeAPI = async (baseURL) => {
         headers: {
           authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
+          accept: "application/json",
         },
         body: new URLSearchParams(params),
       });
