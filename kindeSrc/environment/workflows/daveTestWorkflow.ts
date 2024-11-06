@@ -3,20 +3,21 @@ import { createKindeAPI } from "./utils/getKindeAPI";
 export const workflowSettings = {
   id: "addUserTokenClaim",
   name: "User token generation",
+  failurePolicy: {
+    action: "continue",
+  },
   trigger: "user:tokens_generation",
   bindings: {
     console: {},
     "kinde.fetch": {},
-    "kinde.idToken": {
-      resetClaims: true,
-    },
-    "kinde.accessToken": {
-      resetClaims: true,
-    },
+    "kinde.idToken": {},
+    "kinde.accessToken": {},
+    "kinde.env": {},
+    url: {},
   },
 };
 
-export default async function CanBeAnyName({ context, request }) {
+export default async function canBeAnyName({ context, request }) {
   const baseURL = context.domains.kindeDomain;
   const kindeAPI = await createKindeAPI(baseURL);
   const users = await kindeAPI.get("users");
