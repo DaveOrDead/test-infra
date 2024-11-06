@@ -15,9 +15,10 @@ const createKindeAPI = async (baseURL) => {
       client_secret: kinde.env.get("WF_M2M_CLIENT_SECRET")?.value,
     }),
   });
-  console.log("received token", token);
+  console.log("received token");
 
   const kindeAPI = async (accessToken) => {
+    console.log("creating kindeAPI with accessToken", accessToken);
     const callKindeAPI = async (method, endpoint, params) =>
       await kinde.fetch(`${baseURL}/api/v1/${endpoint}`, {
         method,
