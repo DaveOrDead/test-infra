@@ -1,4 +1,4 @@
-import { createKindeAPI } from "./utils/getKindeAPI";
+import { createKindeAPI } from "../utils/getKindeAPI";
 
 export const workflowSettings = {
   id: "addUserTokenClaim",
