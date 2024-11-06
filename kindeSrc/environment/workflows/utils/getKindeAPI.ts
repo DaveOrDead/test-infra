@@ -41,7 +41,7 @@ const createKindeAPI = async (baseURL) => {
     };
   };
 
-  return kindeAPI(token.accessToken);
+  return kindeAPI(token.access_token);
 };
 
 export { createKindeAPI };
