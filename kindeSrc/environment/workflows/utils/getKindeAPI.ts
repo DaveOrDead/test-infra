@@ -33,14 +33,22 @@ const createKindeAPI = async (baseURL) => {
       });
 
     return {
-      get: async (endpoint, params) =>
-        await callKindeAPI("GET", endpoint, params).json,
-      post: async (endpoint, params) =>
-        await callKindeAPI("PATCH", endpoint, params).json,
-      put: async (endpoint, params) =>
-        await callKindeAPI("PUT", endpoint, params).json,
-      delete: async (endpoint, params) =>
-        await callKindeAPI("DELETE", endpoint, params).json,
+      get: async (endpoint, params) => {
+        const res = await callKindeAPI("GET", endpoint, params)
+        return res.json;
+      },
+      post: async (endpoint, params) => {
+        const res = await callKindeAPI("POST", endpoint, params)
+        return res.json;
+      }
+      put: async (endpoint, params) => {
+        const res = await callKindeAPI("PUT", endpoint, params)
+        return res.json;
+      }
+      delete: async (endpoint, params) => {
+        const res = await callKindeAPI("DELETE", endpoint, params)
+        return res.json;
+      }
     };
   };
 
